@@ -1,0 +1,64 @@
+{
+  "name": "koa-bundle",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "outDir": "dist",
+  "scripts": {
+    "build": "tsc --listFiles -p tsconfig.json",
+    "compile": "npm run build && npm run post-compile",
+    "post-compile": "cp package.json package-lock.json $npm_package_outDir",
+    "test": "ts-mocha -p test/tsconfig.json 'test/**/*.spec.ts' --exit",
+    "post-publish": "git tag v$npm_package_version && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodasoftware/koa-bundle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodasoftware/koa-bundle/issues"
+  },
+  "homepage": "https://github.com/kodasoftware/koa-bundle#readme",
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "@koa/router": "^8.0.0",
+    "@types/ajv": "^1.0.0",
+    "@types/formidable": "^1.0.31",
+    "@types/koa": "^2.0.49",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-compose": "^3.2.4",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-mount": "^4.0.0",
+    "@types/koa-pino-logger": "^2.1.5",
+    "@types/koa__router": "^8.0.0",
+    "@types/swagger-jsdoc": "^3.0.2",
+    "ajv": "^6.10.2",
+    "formidable": "^1.2.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-json": "^2.0.2",
+    "koa-mount": "^4.0.0",
+    "koa-pino-logger": "^2.1.3",
+    "koa2-swagger-ui": "^2.15.3",
+    "swagger-jsdoc": "^3.4.0",
+    "uuid-random": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.9",
+    "@types/request-promise": "^4.1.45",
+    "@types/should": "^13.0.0",
+    "mocha": "^6.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "should": "^13.2.3",
+    "testdouble": "^3.12.3",
+    "ts-mocha": "^6.0.0",
+    "ts-node": "^8.3.0",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.5.3"
+  }
+}
