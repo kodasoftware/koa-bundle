@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 
-const UPDATE_METHODS = ['POST', 'PUT'];
+const UPDATE_METHODS = ['POST', 'PUT', 'PATCH', 'DELETE'];
 
 export function requestValidationForSchema(
   schema: any,
@@ -15,7 +15,7 @@ export function requestValidationForSchema(
   const ajv = new Ajv(opts);
   const validate = ajv.compile(schema);
   return async function requestValidationMiddlewate(ctx, next) {
-    let data = { ...ctx.query, ...ctx.headers };
+    let data = ctx.query;
     if (UPDATE_METHODS.includes(ctx.method)) {
       if (ctx.is('multipart')) data = { ...data, ...ctx.request.body, ...ctx.request.files };
       else data = { ...data, ...ctx.request.body };

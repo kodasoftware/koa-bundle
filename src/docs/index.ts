@@ -5,7 +5,7 @@ import { generateDocsUi, generateDocs } from './docs';
 
 export function generateDocsRoute (
   name: string,
-  method: 'get' | 'post' | 'put' | 'patch' | 'delete',
+  method: string,
   path: string,
   title: string,
   version: string,
@@ -31,13 +31,7 @@ export function generateDocsRoute (
       apis,
     }),
   ]);
-  return compose([router.allowedMethods(), router.routes(), generateDocsUi({
-    title,
-    swaggerVersion: '3.23.8',
-    routePrefix: path,
-    hideTopbar: true,
-    ...options,
-  })]);
+  return compose([router.allowedMethods(), router.routes(), generateDocsUi(options)]);
 }
 
 export { generateDocs, generateDocsUi }

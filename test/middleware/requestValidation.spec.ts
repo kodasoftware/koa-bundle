@@ -27,7 +27,7 @@ describe('Request validation middleware', () => {
     app.use(koaBodyMiddleware());
     app.use(requestValidationForSchema(schema));
     app.use((ctx) => {
-      validate({ ...ctx.request.body, ...ctx.query });
+      validate({ ...ctx.req.body, ...ctx.request.query });
       ctx.res.statusCode = 200;
     });
     server = app.listen(port);
@@ -58,7 +58,7 @@ describe('Request validation middleware', () => {
   });
 
   it('should validate a valid query string', async () => {
-    const query = { foo: 'bar', example: '3' };
+    const query = { foo: 'bar', example: 3 };
     const qs = stringify(query);
     td.when(validate(), { ignoreExtraArgs: true }).thenDo((_body) => {
       _body.should.be.eql(query);

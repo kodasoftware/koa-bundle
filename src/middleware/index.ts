@@ -1,5 +1,5 @@
 import compose from 'koa-compose';
-import koaBody from 'koa-bodyparser';
+import koaBody from 'koa-body';
 import { koaBodyMiddleware } from './body';
 import { correlationMiddleware } from './correlation';
 import { loggerMiddleware, LogLevel, LogLevelValues } from './logger';
@@ -13,7 +13,7 @@ export function composedMiddlewares(
   level: LogLevel,
   schema?: any,
   opts?: {
-    body?: koaBody.Options,
+    body?: koaBody.IKoaBodyOptions & koaBody.IKoaBodyFormidableOptions,
     logger?: {
       redact?: {
         paths: string[],
