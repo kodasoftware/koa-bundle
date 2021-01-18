@@ -1,5 +1,6 @@
 import compose from 'koa-compose';
 import koaBody from 'koa-body';
+import { authMiddleware, AuthContext } from './auth'
 import { koaBodyMiddleware } from './body';
 import { correlationMiddleware } from './correlation';
 import { loggerMiddleware, LogLevel, LogLevelValues } from './logger';
@@ -44,6 +45,7 @@ export function composedMiddlewares(
 };
 
 export {
+  authMiddleware, AuthContext,
   koaBodyMiddleware,
   correlationMiddleware,
   errorMiddleware,

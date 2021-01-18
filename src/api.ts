@@ -1,6 +1,5 @@
 import Koa from 'koa';
 
-const app = new Koa();
-app.silent = true;
+const app = () => new Koa();
 
 export { app };
