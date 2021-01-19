@@ -1,11 +1,12 @@
 {
   "name": "@kodasoftware/koa-bundle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "outDir": "dist",
   "scripts": {
     "build": "tsc --listFiles -p tsconfig.json",
+    "pre-compile": "rm -rf dist/",
     "compile": "npm run build && npm run post-compile",
     "post-compile": "cp package.json package-lock.json $npm_package_outDir",
     "test": "ts-mocha -p test/tsconfig.json 'test/**/*.spec.ts' --exit",

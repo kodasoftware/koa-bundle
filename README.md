@@ -68,3 +68,11 @@ app.use(mount('/foo', route('exampleRoute', '/', 'get', [
 
 app.listen(9000);
 ```
+
+## Publish
+
+```
+npm run compile
+cd dist
+npm publish
+```
